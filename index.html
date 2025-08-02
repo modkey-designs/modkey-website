@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modkey designs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --bg-color: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-color: #d4af37;
+            
+            /* Typography Scale - Major Third (1.25) */
+            --base-mobile: 16px;
+            --base-desktop: 20px;
+            
+            /* Mobile sizes */
+            --h1-mobile: calc(var(--base-mobile) * 1.953); /* 31.25px */
+            --h3-mobile: calc(var(--base-mobile) * 1.25);  /* 20px */
+            
+            /* Desktop sizes */
+            --h1-desktop: calc(var(--base-desktop) * 1.953); /* 39.06px */
+            --h3-desktop: calc(var(--base-desktop) * 1.25);  /* 25px */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: var(--base-mobile);
+            letter-spacing: 0%;
+        }
+        
+        /* Navigation */
+        nav {
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: var(--base-mobile);
+            letter-spacing: -2%;
+            color: var(--text-primary);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .hero-heading {
+            font-size: var(--h1-mobile);
+            font-weight: 600;
+            letter-spacing: -2%;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            opacity: 0;
+        }
+        
+        .hero-subtext {
+            font-size: var(--h3-mobile);
+            font-weight: 400;
+            letter-spacing: 0%;
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 300ms ease-in-out;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 200ms ease;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Typewriter Animation */
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--accent-color);
+            white-space: nowrap;
+            animation: typing 2s steps(60, end) ease-in-out, blink-caret 1s step-end infinite;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes typing {
+            from { 
+                width: 0;
+                opacity: 1;
+            }
+            to { 
+                width: 100%;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent-color); }
+        }
+        
+        /* Show subtext animation */
+        .show-subtext {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            body {
+                font-size: var(--base-desktop);
+            }
+            
+            nav {
+                padding: 2.5rem 3rem;
+            }
+            
+            .logo {
+                font-size: var(--base-desktop);
+            }
+            
+            main {
+                padding: 3rem;
+            }
+            
+            .hero-heading {
+                font-size: var(--h1-desktop);
+                margin-bottom: 2rem;
+            }
+            
+            .hero-subtext {
+                font-size: var(--h3-desktop);
+            }
+            
+            footer {
+                padding: 2.5rem 3rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ensure proper contrast ratios for WCAG compliance */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-secondary: rgba(255, 255, 255, 0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">modkey designs</div>
+    </nav>
+    
+    <main>
+        <div class="hero-content">
+            <h1 class="hero-heading typewriter" id="mainHeading">modkey designs is a product design studio based in Australia and Singapore</h1>
+            <h3 class="hero-subtext" id="subtext">website coming soon</h3>
+        </div>
+    </main>
+    
+    <footer>
+        <a href="mailto:admin@modkeydesigns.com">admin@modkeydesigns.com</a>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainHeading = document.getElementById('mainHeading');
+            const subtext = document.getElementById('subtext');
+            
+            // Start the typewriter animation after 2 seconds
+            setTimeout(() => {
+                mainHeading.style.opacity = '1';
+                
+                // Show subtext 500ms after typewriter completes (2s typewriter + 500ms delay)
+                setTimeout(() => {
+                    subtext.classList.add('show-subtext');
+                }, 2500); // 2000ms (typewriter) + 500ms delay
+                
+            }, 0); // Animation delay is handled by CSS
+        });
+    </script>
+</body>
+</html>
