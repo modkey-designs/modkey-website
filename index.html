@@ -179,19 +179,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainHeading = document.getElementById('mainHeading');
             const subtext = document.getElementById('subtext');
-            const text = "modkey designs is a product design studio based in Perth & Singapore";
+            const text = '<span class="primary-text">modkey designs</span> is a product design studio based in Perth & Singapore';
             
             let i = 0;
             
             function typeWriter() {
                 if (i < text.length) {
                     let currentText = text.slice(0, i + 1);
-                    
-                    // Add primary color to "modkey designs" when it's fully typed
-                    if (currentText.includes('modkey designs') && currentText.length >= 'modkey designs'.length) {
-                        currentText = currentText.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
-                    }
-                    
                     mainHeading.innerHTML = currentText + '<span class="typewriter-cursor"></span>';
                     i++;
                     
@@ -212,7 +206,7 @@
             setTimeout(() => {
                 mainHeading.style.opacity = '1';
                 typeWriter();
-            }, 1000);
+            }, 800);
         });
     </script>
 </body>
