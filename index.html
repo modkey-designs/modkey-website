@@ -173,7 +173,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainHeading = document.getElementById('mainHeading');
             const subtext = document.getElementById('subtext');
-            const text = "modkey designs is a product design studio based in Australia and Singapore";
+            const text = "modkey designs is a product design studio based in Perth & Singapore";
             
             let i = 0;
             
@@ -181,7 +181,7 @@
                 if (i < text.length) {
                     mainHeading.innerHTML = text.slice(0, i + 1) + '<span class="typewriter-cursor"></span>';
                     i++;
-                    setTimeout(typeWriter, 50); // 50ms between each character
+                    setTimeout(typeWriter, Math.random() * 40 + 30); // 40-70ms between each character
                 } else {
                     // Remove cursor and show subtext after 500ms delay
                     setTimeout(() => {
