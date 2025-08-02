@@ -85,6 +85,17 @@
             transition: all 300ms ease-in-out;
         }
         
+        /* Highlighter Effect */
+        .highlight {
+            background: linear-gradient(104deg, var(--accent-color) 0%, var(--accent-color) 100%);
+            background-size: 100% 60%;
+            background-repeat: no-repeat;
+            background-position: 0 85%;
+            padding: 0 6px;
+            color: var(--bg-color);
+            font-weight: 600;
+        }
+        
         /* Footer */
         footer {
             padding: 2rem 1.5rem;
@@ -179,13 +190,24 @@
             
             function typeWriter() {
                 if (i < text.length) {
-                    mainHeading.innerHTML = text.slice(0, i + 1) + '<span class="typewriter-cursor"></span>';
+                    let currentText = text.slice(0, i + 1);
+                    
+                    // Add highlight to "modkey designs" when it's fully typed
+                    if (currentText.includes('modkey designs') && currentText.length >= 'modkey designs'.length) {
+                        currentText = currentText.replace('modkey designs', '<span class="highlight">modkey designs</span>');
+                    }
+                    
+                    mainHeading.innerHTML = currentText + '<span class="typewriter-cursor"></span>';
                     i++;
-                    setTimeout(typeWriter, Math.random() * 40 + 30); // 40-70ms between each character
+                    
+                    // Random timeout between 30-70ms
+                    const randomDelay = Math.random() * 40 + 30;
+                    setTimeout(typeWriter, randomDelay);
                 } else {
-                    // Remove cursor and show subtext after 500ms delay
+                    // Final text with highlight
+                    const finalText = text.replace('modkey designs', '<span class="highlight">modkey designs</span>');
                     setTimeout(() => {
-                        mainHeading.innerHTML = text;
+                        mainHeading.innerHTML = finalText;
                         subtext.classList.add('show-subtext');
                     }, 500);
                 }
