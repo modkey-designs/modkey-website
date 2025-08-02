@@ -195,10 +195,10 @@
                     setTimeout(typeWriter, randomDelay);
                 } else {
                     setTimeout(() => {
-                        mainHeading.innerHTML = finalText;
-                        subtext.classList.add('show-subtext');
                         // Final text with primary color
                         const finalText = text.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
+                        mainHeading.innerHTML = finalText;
+                        subtext.classList.add('show-subtext');
                     }, 500);
                 }
             }
