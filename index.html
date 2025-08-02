@@ -85,33 +85,10 @@
             transition: all 300ms ease-in-out;
         }
         
-        /* Highlighter Effect */
-        .highlight {
-            position: relative;
-            padding: 4px 6px;
-            color: var(--text-primary); /* Start with white text */
+        /* Primary color accent */
+        .primary-text {
+            color: var(--accent-color);
             font-weight: 600;
-            transition: color 400ms ease-in-out;
-        }
-
-        .highlight.animate {
-            color: var(--bg-color); /* Fade to black when animated */
-        }
-
-        .highlight::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10%;
-            width: 0%;
-            height: 80%;
-            background-color: var(--accent-color);
-            z-index: -1;
-            transition: width 300ms ease-in;
-        }
-
-        .highlight.animate::before {
-            width: 100%;
         }
         
         /* Footer */
@@ -205,11 +182,16 @@
             const text = "modkey designs is a product design studio based in Perth & Singapore";
             
             let i = 0;
-            let typewriterComplete = false;
             
             function typeWriter() {
                 if (i < text.length) {
                     let currentText = text.slice(0, i + 1);
+                    
+                    // Add primary color to "modkey designs" when it's fully typed
+                    if (currentText.includes('modkey designs') && currentText.length >= 'modkey designs'.length) {
+                        currentText = currentText.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
+                    }
+                    
                     mainHeading.innerHTML = currentText + '<span class="typewriter-cursor"></span>';
                     i++;
                     
@@ -217,23 +199,12 @@
                     const randomDelay = Math.random() * 40 + 30;
                     setTimeout(typeWriter, randomDelay);
                 } else {
-                    typewriterComplete = true;
-                    // Remove cursor and add highlight without animation first
-                    const finalText = text.replace('modkey designs', '<span class="highlight">modkey designs</span>');
-                    mainHeading.innerHTML = finalText;
-                    
-                    // Trigger highlight animation after a brief delay
+                    // Final text with primary color
+                    const finalText = text.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
                     setTimeout(() => {
-                        const highlightElement = mainHeading.querySelector('.highlight');
-                        if (highlightElement) {
-                            highlightElement.classList.add('animate');
-                        }
-                        
-                        // Show subtext 300ms after highlight starts
-                        setTimeout(() => {
-                            subtext.classList.add('show-subtext');
-                        }, 300);
-                    }, 200);
+                        mainHeading.innerHTML = finalText;
+                        subtext.classList.add('show-subtext');
+                    }, 500);
                 }
             }
             
