@@ -89,6 +89,7 @@
         .primary-text {
             color: var(--accent-color);
             font-weight: 600;
+            transition: color 500ms ease-in-out;
         }
         
         /* Footer */
@@ -179,7 +180,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainHeading = document.getElementById('mainHeading');
             const subtext = document.getElementById('subtext');
-            const text = '<span class="primary-text">modkey designs</span> is a product design studio based in Perth & Singapore';
+            const text = "modkey designs is a product design studio based in Perth & Singapore";
             
             let i = 0;
             
@@ -193,11 +194,11 @@
                     const randomDelay = Math.random() * 40 + 30;
                     setTimeout(typeWriter, randomDelay);
                 } else {
-                    // Final text with primary color
-                    const finalText = text.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
                     setTimeout(() => {
                         mainHeading.innerHTML = finalText;
                         subtext.classList.add('show-subtext');
+                        // Final text with primary color
+                        const finalText = text.replace('modkey designs', '<span class="primary-text">modkey designs</span>');
                     }, 500);
                 }
             }
