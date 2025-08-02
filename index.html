@@ -89,10 +89,15 @@
         .highlight {
             position: relative;
             padding: 4px 6px;
-            color: var(--bg-color);
+            color: var(--text-primary); /* Start with white text */
             font-weight: 600;
+            transition: color 400ms ease-in-out;
         }
-        
+
+        .highlight.animate {
+            color: var(--bg-color); /* Fade to black when animated */
+        }
+
         .highlight::before {
             content: '';
             position: absolute;
@@ -102,9 +107,9 @@
             height: 80%;
             background-color: var(--accent-color);
             z-index: -1;
-            transition: width 600ms ease-in;
+            transition: width 300ms ease-in;
         }
-        
+
         .highlight.animate::before {
             width: 100%;
         }
